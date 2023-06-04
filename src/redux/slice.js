@@ -1,17 +1,20 @@
-const { createSlice } = require('@reduxjs/toolkit');
+const { createSlice } = require("@reduxjs/toolkit");
 
 const slice = createSlice({
-  name: 'toolkit',
+  name: "toolkit",
   initialState: {
     followers: 100500,
     tweets: 777,
+    isFollowed: false,
   },
   reducers: {
     follow(state) {
       state.followers += 1;
+      state.isFollowed = true;
     },
     unfollow(state) {
       state.followers -= 1;
+      state.isFollowed = false;
     },
   },
 });

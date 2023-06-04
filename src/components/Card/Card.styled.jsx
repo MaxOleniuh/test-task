@@ -16,20 +16,13 @@ export const Line = s.div `
 width: 100%;
 height: 8px;
 background: #EBD8FF;
+box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06), inset 0px -1.71846px 3.43693px #AE7BE3, inset 0px 3.43693px 2.5777px #FBF8FF;
 z-index: 0;
 `
-export const Eclipse = s.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;  
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;   
-  border:8px solid #EBD8FF;
-  top: 177px;
-  background: #5736A3;
-`;
+export const Avatar = s.img `
+    position: absolute;
+    top: 177px;
+`
 export const TweetsTitle = s.p `
 margin: 70px 0 0 0;
 width: 132px;
