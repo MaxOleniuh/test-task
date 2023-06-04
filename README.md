@@ -1,6 +1,6 @@
 # Getting Started
 
-## To run the project you will need to put in terminal:
+## To run the project you will need to run in terminal:
 
 ### `npm install`
 
