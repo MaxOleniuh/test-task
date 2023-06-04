@@ -4,7 +4,9 @@ export const CardWrapper = s.div `
 display: flex;
 align-items: center;
 flex-direction: column;
-width: 380px;
+margin: 0 auto;
+margin-top: 100px;
+max-width: 380px;
 background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
 box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
 border-radius: 20px;
@@ -21,7 +23,7 @@ z-index: 0;
 `
 export const Avatar = s.img `
     position: absolute;
-    top: 177px;
+    top: 278px;
 `
 export const TweetsTitle = s.p `
 margin: 70px 0 0 0;
@@ -38,7 +40,7 @@ color: #EBD8FF;
 
 export const FollowersTitle = s.p `
 margin: 16px 0 26px 0;
-width: 214px;
+width: 220px;
 height: 24px;
 font-family: 'Montserrat';
 font-style: normal;
