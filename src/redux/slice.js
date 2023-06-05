@@ -6,6 +6,7 @@ const slice = createSlice({
     followers: 100500,
     tweets: 777,
     isFollowed: false,
+    users: [],
   },
   reducers: {
     follow(state) {
