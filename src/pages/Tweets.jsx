@@ -47,7 +47,7 @@ export const Tweets = () => {
                   </AvatarWrapper>
             <TweetsTitle>{tweets} tweets</TweetsTitle>
             <FollowersTitle>
-              {followers && Number(followers.toLocaleString())} Followers
+              {followers && followers.toLocaleString()} Followers
             </FollowersTitle>
             <Button
               type="button"
