@@ -25,9 +25,25 @@ export const Avatar = s.img `
     position: absolute;
     top: 278px;
 `
+export const CardAvatar = s.img `
+    border-radius: 50%;
+    position: absolute;
+    top: 8.5px;
+`
+export const Eclipse = s.img`
+    top:340px;
+`
+export const AvatarWrapper = s.div `
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -45px;
+    margin-bottom: -95px;
+`
 export const TweetsTitle = s.p `
 margin: 70px 0 0 0;
-width: 132px;
 height: 24px;
 font-family: 'Montserrat';
 font-style: normal;

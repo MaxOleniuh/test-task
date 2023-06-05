@@ -29,7 +29,7 @@ export const Card = () => {
     <CardWrapper>
       <Image src={img} alt="quiz" width="308" height="168" />
       <Line />
-       <Avatar src={avatar} alt="avatar" />
+      <Avatar src={avatar} alt="avatar" />
       <TweetsTitle>777 tweets</TweetsTitle>
       <FollowersTitle>{followers.toLocaleString()} Followers</FollowersTitle>
       <Button type="button" onClick={!isFollowed ? handleFollow : handleUnfollow} isFollowed={isFollowed}>

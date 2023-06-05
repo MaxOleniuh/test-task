@@ -28,6 +28,16 @@ const Header = props => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const navigate = useNavigate();
+
+  const handleNavigateTweets = () => {
+    navigate('/tweets');
+  };
+
+   const handleNavigateHome = () => {
+    navigate('/');
+  };
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Divider />
@@ -44,16 +54,6 @@ const Header = props => {
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
-  
-  const navigate = useNavigate();
-
-  const handleNavigateTweets = () => {
-    navigate('/tweets');
-  };
-
-   const handleNavigateHome = () => {
-    navigate('/');
-  };
 
   return (
     <Box sx={{ display: 'flex' }}>
