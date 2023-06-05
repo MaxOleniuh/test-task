@@ -18,7 +18,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'Tweets'];
+// const navItems = ['Home', 'Tweets'];
 
 const Header = props => {
   const { window } = props;
@@ -42,13 +42,16 @@ const Header = props => {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+          <ListItem disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }} onClick={handleNavigateHome}>
+              <ListItemText primary={'Home'} />
+            </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+            <ListItemButton sx={{ textAlign: 'center' }} onClick={handleNavigateTweets}>
+              <ListItemText primary={'Tweets'} />
             </ListItemButton>
           </ListItem>
-        ))}
       </List>
     </Box>
   );
