@@ -3,7 +3,7 @@ import { Home } from "../pages/Home";
 import { Tweets } from "../pages/Tweets";
 
 export const App = () => {
-  
+    console.log(1)
   return (
     <>
       <Routes>

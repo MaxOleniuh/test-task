@@ -33,7 +33,6 @@ export const Tweets = () => {
       dispatch(unfollow(userId));
     }
   };
-  console.log(1)
   return (
     <>
       <Header />
