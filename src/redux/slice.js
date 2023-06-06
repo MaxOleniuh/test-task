@@ -8,16 +8,36 @@ const slice = createSlice({
     tweets: 777,
     isFollowed: false,
     loading: false,
-    users: [],
+    users: [
+      {
+        user: "",
+        avatar: "",
+        tweets: 0,
+        followers: 0,
+        id: "",
+      },
+    ],
   },
   reducers: {
     follow(state) {
       state.followers += 1;
       state.isFollowed = true;
+      state.users = state.users.map((user) => {
+        return {
+          ...user,
+          followers: user.followers + 1,
+        };
+      });
     },
     unfollow(state) {
       state.followers -= 1;
       state.isFollowed = false;
+      state.users = state.users.map((user) => {
+        return {
+          ...user,
+          followers: user.followers - 1,
+        };
+      });
     },
   },
   extraReducers: (builder) => {

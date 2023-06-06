@@ -22,15 +22,15 @@ export const Tweets = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
     const users = useSelector((state) => state.toolkit.users);
-    const isFollowed = useSelector((state) => state.toolkit.isFollowed);
-  const handleFollow = () => {
+  const isFollowed = useSelector((state) => state.toolkit.isFollowed);
+  const handleFollow = (userId) => {
     if (!isFollowed) {
-      dispatch(follow());
+      dispatch(follow(userId));
     }
   };
-  const handleUnfollow = () => {
+  const handleUnfollow = (userId) => {
     if (isFollowed) {
-      dispatch(unfollow());
+      dispatch(unfollow(userId));
     }
   };
   return (
