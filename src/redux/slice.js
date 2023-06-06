@@ -19,24 +19,32 @@ const slice = createSlice({
     ],
   },
   reducers: {
-    follow(state) {
+    follow(state, action) {
+      const userId = action.payload;
       state.followers += 1;
       state.isFollowed = true;
       state.users = state.users.map((user) => {
-        return {
-          ...user,
-          followers: user.followers + 1,
-        };
+        if (user.id === userId) {
+          return {
+            ...user,
+            followers: user.followers + 1,
+          };
+        }
+        return user;
       });
     },
-    unfollow(state) {
+    unfollow(state, action) {
+      const userId = action.payload;
       state.followers -= 1;
       state.isFollowed = false;
       state.users = state.users.map((user) => {
-        return {
-          ...user,
-          followers: user.followers - 1,
-        };
+        if (user.id === userId) {
+          return {
+            ...user,
+            followers: user.followers - 1,
+          };
+        }
+        return user;
       });
     },
   },
