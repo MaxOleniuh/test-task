@@ -3,7 +3,7 @@ import Header from "../shared/Header/Header";
 export const Home = () => {
     return (
         <>
-        <Header />
+            <Header/>
         <Card/>
         </>
     )

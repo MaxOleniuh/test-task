@@ -30,8 +30,20 @@ export const CardAvatar = s.img `
     position: absolute;
     top: 8.5px;
 `
-export const Eclipse = s.img`
-    top:340px;
+export const Eclipse = s.div`
+    position: absolute;
+    top: -5px;
+    right: 50%;
+    transform: translate(50%,-50%);
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ebd8ff;
+    box-shadow: 0 4.39163px 4.39163px #0000000f, inset 0 -2.19582px 4.39163px #ae7be3, inset 0 4.39163px 3.29372px #fbf8ff;
+    border-radius: 50%;
 `
 export const AvatarWrapper = s.div `
     margin: 0;
@@ -39,8 +51,6 @@ export const AvatarWrapper = s.div `
     justify-content: center;
     align-items: center;
     position: relative;
-    top: -45px;
-    margin-bottom: -95px;
 `
 export const TweetsTitle = s.p `
 margin: 70px 0 0 0;

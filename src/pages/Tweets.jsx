@@ -7,43 +7,39 @@ import {
   TweetsTitle,
   FollowersTitle,
   Button,
-  CardAvatar,
     Eclipse,
-  AvatarWrapper
+  AvatarWrapper,
+  CardAvatar
 } from "../components/Card/Card.styled";
 import img from "../images/img.svg";
-import eclipse from "../images/eclipse.png";
 import { follow, unfollow } from "../redux/slice";
 import { useEffect } from "react";
 import { fetchUsers } from "../redux/operations";
 export const Tweets = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
     useEffect(() => {
     dispatch(fetchUsers());
-  }, [dispatch]);
-    const users = useSelector((state) => state.toolkit.users);
-  const isFollowed = useSelector((state) => state.toolkit.isFollowed);
-  const handleFollow = (userId) => {
-    if (!isFollowed) {
+    }, [dispatch]);
+  
+  const users = useSelector((state) => state.toolkit.users);
+    const handleFollow = (userId) => {  
       dispatch(follow(userId));
-    }
   };
   const handleUnfollow = (userId) => {
-    if (isFollowed) {
       dispatch(unfollow(userId));
-    }
   };
   return (
     <>
       <Header />
-      {users.map(({ avatar, tweets, followers, id }) => (
+      {users && users.map(({ avatar, tweets, followers, id, isFollowed }) => (
         <li key={id}>
           <CardWrapper>
             <Image src={img} alt="quiz" width="308" height="168" />
                   <Line />
                   <AvatarWrapper>
-                       <Eclipse src={eclipse} alt="eclipse" />
-            <CardAvatar src={avatar} alt="avatar" width="63" height="63" />
+              <Eclipse>
+               <CardAvatar src={avatar} alt="user"  height="63"  width="63"/>
+                       </Eclipse>
                   </AvatarWrapper>
             <TweetsTitle>{tweets} tweets</TweetsTitle>
             <FollowersTitle>
@@ -51,7 +47,7 @@ export const Tweets = () => {
             </FollowersTitle>
             <Button
               type="button"
-              onClick={!isFollowed ? handleFollow : handleUnfollow}
+              onClick={!isFollowed ? () => handleFollow(id) : () => handleUnfollow(id)}
               isFollowed={isFollowed}
             >
               {isFollowed ? "Following" : "Follow"}

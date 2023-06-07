@@ -16,9 +16,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { useNavigate } from 'react-router-dom';
-
 const drawerWidth = 240;
-// const navItems = ['Home', 'Tweets'];
 
 const Header = props => {
   const { window } = props;
@@ -42,7 +40,7 @@ const Header = props => {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Divider />
       <List>
-          <ListItem disablePadding>
+        <ListItem disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }} onClick={handleNavigateHome}>
               <ListItemText primary={'Home'} />
             </ListItemButton>
@@ -65,7 +63,6 @@ const Header = props => {
         <Toolbar>
           <IconButton
             color="inherit"
-            aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
@@ -96,7 +93,7 @@ const Header = props => {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },

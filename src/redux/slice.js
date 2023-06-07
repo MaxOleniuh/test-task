@@ -6,46 +6,43 @@ const slice = createSlice({
   initialState: {
     followers: 100500,
     tweets: 777,
-    isFollowed: false,
     loading: false,
-    users: [
-      {
-        user: "",
-        avatar: "",
-        tweets: 0,
-        followers: 0,
-        id: "",
-      },
-    ],
+    users: [],
   },
   reducers: {
-    follow(state, action) {
-      const userId = action.payload;
-      state.followers += 1;
-      state.isFollowed = true;
-      state.users = state.users.map((user) => {
-        if (user.id === userId) {
-          return {
-            ...user,
-            followers: user.followers + 1,
-          };
-        }
-        return user;
-      });
+    follow(state, id) {
+      const userIndex = state.users.findIndex((user) => user.id === id.payload);
+      if (userIndex !== -1) {
+        state.users = state.users.map((user, index) => {
+          if (index === userIndex) {
+            return {
+              ...user,
+              followers: user.followers + 1,
+              isFollowed: (user.isFollowed = true),
+            };
+          }
+          return user;
+        });
+      } else {
+        console.log("User not found");
+      }
     },
-    unfollow(state, action) {
-      const userId = action.payload;
-      state.followers -= 1;
-      state.isFollowed = false;
-      state.users = state.users.map((user) => {
-        if (user.id === userId) {
-          return {
-            ...user,
-            followers: user.followers - 1,
-          };
-        }
-        return user;
-      });
+    unfollow(state, id) {
+      const userIndex = state.users.findIndex((user) => user.id === id.payload);
+      if (userIndex !== -1) {
+        state.users = state.users.map((user, index) => {
+          if (index === userIndex) {
+            return {
+              ...user,
+              followers: user.followers - 1,
+              isFollowed: (user.isFollowed = false),
+            };
+          }
+          return user;
+        });
+      } else {
+        console.log("User not found");
+      }
     },
   },
   extraReducers: (builder) => {
