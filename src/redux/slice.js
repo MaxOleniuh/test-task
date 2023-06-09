@@ -4,9 +4,8 @@ const { createSlice } = require("@reduxjs/toolkit");
 const slice = createSlice({
   name: "toolkit",
   initialState: {
-    followers: 100500,
-    tweets: 777,
     loading: false,
+    currentPage: 1,
     users: [],
   },
   reducers: {
@@ -51,8 +50,12 @@ const slice = createSlice({
         state.loading = true;
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
+        state.users =
+          state.currentPage === 1
+            ? state.users
+            : [...state.users, ...action.payload];
         state.loading = false;
+        state.currentPage += 1;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.error = action.error.message;
