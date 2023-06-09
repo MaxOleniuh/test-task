@@ -17,17 +17,18 @@ import { useEffect } from "react";
 import { fetchUsers } from "../../redux/operations";
 import LoadMore from "@mui/material/Button";
 import ScrollToTop from "react-scroll-to-top";
-
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 export const Tweets = () => {
   const dispatch = useDispatch();
+    const currentPage = useSelector((state) => state.toolkit.currentPage);
 
   useEffect(() => {
+    if(currentPage === 1)
     dispatch(fetchUsers());
-  }, [dispatch]);
+  }, [dispatch, currentPage]);
 
-  const currentPage = useSelector((state) => state.toolkit.currentPage);
   const users = useSelector((state) => state.toolkit.users);
-
+  console.log(users.length)
   const handleFollow = (userId) => {
     dispatch(follow(userId));
   };
@@ -41,7 +42,7 @@ export const Tweets = () => {
   return (
     <>
       <Header />
-      <ScrollToTop smooth component={<p style={{ color: "blue" }}>UP</p>} />
+      <ScrollToTop smooth component={<KeyboardArrowUpIcon />} style={{ borderRadius: '50%', backgroundColor: '#315cc1', color: 'white'}} />
       {users &&
         users.map(({ avatar, tweets, followers, id, isFollowed }) => (
           <li key={id}>
@@ -57,17 +58,17 @@ export const Tweets = () => {
               <FollowersTitle>
                 {followers && followers.toLocaleString()} Followers
               </FollowersTitle>
-              <Button
-                type="button"
-                onClick={
-                  !isFollowed
-                    ? () => handleFollow(id)
-                    : () => handleUnfollow(id)
-                }
-                isFollowed={isFollowed}
-              >
-                {isFollowed ? "Following" : "Follow"}
-              </Button>
+             <Button
+              type="button"
+              onClick={
+                !isFollowed
+                  ? () => handleFollow(id)
+                  : () => handleUnfollow(id)
+              }
+              isFollowed={isFollowed}
+            >
+              {isFollowed ? "Following" : "Follow"}
+            </Button>
             </CardWrapper>
           </li>
         ))}

@@ -55,7 +55,8 @@ const slice = createSlice({
             ? state.users
             : [...state.users, ...action.payload];
         state.loading = false;
-        state.currentPage += 1;
+        state.currentPage = state.currentPage + 1;
+        state.isFetched = true;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.error = action.error.message;
