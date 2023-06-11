@@ -18,8 +18,11 @@ import { fetchUsers } from "../../redux/operations";
 import LoadMore from "@mui/material/Button";
 import ScrollToTop from "react-scroll-to-top";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Filter } from "../../components/Filter/Filter";
+import Loader from "../../components/Loader/Loader"
 export const Tweets = () => {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.toolkit.loading);
     const currentPage = useSelector((state) => state.toolkit.currentPage);
 
   useEffect(() => {
@@ -28,7 +31,6 @@ export const Tweets = () => {
   }, [dispatch, currentPage]);
 
   const users = useSelector((state) => state.toolkit.users);
-  console.log(users.length)
   const handleFollow = (userId) => {
     dispatch(follow(userId));
   };
@@ -41,7 +43,9 @@ export const Tweets = () => {
 
   return (
     <>
+     {loading && <Loader/>}
       <Header />
+      <Filter/>
       <ScrollToTop smooth component={<KeyboardArrowUpIcon />} style={{ borderRadius: '50%', backgroundColor: '#315cc1', color: 'white'}} />
       {users &&
         users.map(({ avatar, tweets, followers, id, isFollowed }) => (

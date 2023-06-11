@@ -43,6 +43,18 @@ const slice = createSlice({
         console.log("User not found");
       }
     },
+    filterFollowed(state) {
+      state.users = state.users.map((user, index) => {
+        if (user.isFollowed === true) {
+          return {
+            ...user,
+            loading: true,
+          };
+        }
+        return user;
+      });
+      console.log(1);
+    },
   },
   extraReducers: (builder) => {
     builder
