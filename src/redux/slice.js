@@ -43,17 +43,16 @@ const slice = createSlice({
         console.log("User not found");
       }
     },
-    filterFollowed(state) {
-      state.users = state.users.map((user, index) => {
-        if (user.isFollowed === true) {
-          return {
-            ...user,
-            loading: true,
-          };
-        }
-        return user;
-      });
-      console.log(1);
+    filterFollowed: (state, action) => {
+      // state.loading = true;
+      const filterValue = action.payload;
+      state.filterValue = filterValue;
+
+      if (filterValue === "Followed") {
+        state.users = state.users.filter((user) => user.isFollowed === true);
+      } else if (filterValue === "Unfollowed") {
+        state.users = state.users.filter((user) => user.isFollowed === false);
+      }
     },
   },
   extraReducers: (builder) => {
@@ -77,4 +76,4 @@ const slice = createSlice({
   },
 });
 export default slice.reducer;
-export const { follow, unfollow } = slice.actions;
+export const { follow, unfollow, filterFollowed } = slice.actions;

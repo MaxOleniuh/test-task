@@ -43,7 +43,7 @@ export const Tweets = () => {
 
   return (
     <>
-     {loading && <Loader/>}
+     {loading &&  <Loader/>}
       <Header />
       <Filter/>
       <ScrollToTop smooth component={<KeyboardArrowUpIcon />} style={{ borderRadius: '50%', backgroundColor: '#315cc1', color: 'white'}} />
