@@ -44,7 +44,7 @@ const slice = createSlice({
       }
     },
     filterFollowed: (state, action) => {
-      // state.loading = true;
+      state.loading = true;
       const filterValue = action.payload;
       state.filterValue = filterValue;
 
@@ -53,6 +53,7 @@ const slice = createSlice({
       } else if (filterValue === "Unfollowed") {
         state.users = state.users.filter((user) => user.isFollowed === false);
       }
+      state.loading = false;
     },
   },
   extraReducers: (builder) => {

@@ -17,17 +17,16 @@ import { useEffect } from "react";
 import { fetchUsers } from "../../redux/operations";
 import LoadMore from "@mui/material/Button";
 import ScrollToTop from "react-scroll-to-top";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Filter } from "../../components/Filter/Filter";
-import Loader from "../../components/Loader/Loader"
+import Loader from "../../components/Loader/Loader";
 export const Tweets = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.toolkit.loading);
-    const currentPage = useSelector((state) => state.toolkit.currentPage);
+  const currentPage = useSelector((state) => state.toolkit.currentPage);
 
   useEffect(() => {
-    if(currentPage === 1)
-    dispatch(fetchUsers());
+    if (currentPage === 1) dispatch(fetchUsers());
   }, [dispatch, currentPage]);
 
   const users = useSelector((state) => state.toolkit.users);
@@ -43,10 +42,21 @@ export const Tweets = () => {
 
   return (
     <>
-     {loading &&  <Loader/>}
+      {loading && <Loader />}
       <Header />
-      <Filter/>
-      <ScrollToTop smooth component={<KeyboardArrowUpIcon />} style={{ borderRadius: '50%', backgroundColor: '#315cc1', color: 'white'}} />
+      <Filter />
+      <ScrollToTop
+        smooth
+        component={<KeyboardArrowUpIcon />}
+        style={{
+          borderRadius: "50%",
+          backgroundColor: "#315cc1",
+          color: "white",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      />
       {users &&
         users.map(({ avatar, tweets, followers, id, isFollowed }) => (
           <li key={id}>
@@ -62,17 +72,17 @@ export const Tweets = () => {
               <FollowersTitle>
                 {followers && followers.toLocaleString()} Followers
               </FollowersTitle>
-             <Button
-              type="button"
-              onClick={
-                !isFollowed
-                  ? () => handleFollow(id)
-                  : () => handleUnfollow(id)
-              }
-              isFollowed={isFollowed}
-            >
-              {isFollowed ? "Following" : "Follow"}
-            </Button>
+              <Button
+                type="button"
+                onClick={
+                  !isFollowed
+                    ? () => handleFollow(id)
+                    : () => handleUnfollow(id)
+                }
+                isFollowed={isFollowed}
+              >
+                {isFollowed ? "Following" : "Follow"}
+              </Button>
             </CardWrapper>
           </li>
         ))}
