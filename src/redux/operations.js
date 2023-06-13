@@ -17,21 +17,3 @@ export const fetchUsers = createAsyncThunk(
     }
   }
 );
-
-// export const fetchUsers = fetch(
-//   "https://6479a6ffa455e257fa637ef2.mockapi.io/users",
-//   {
-//     method: "GET",
-//     headers: { "content-type": "application/json" },
-//   }
-// )
-//   .then((res) => {
-//     if (res.ok) {
-//       console.log(res.json());
-//       return res.json();
-//     }
-//     // handle error
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
